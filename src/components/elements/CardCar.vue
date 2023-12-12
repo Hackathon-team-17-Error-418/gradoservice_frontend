@@ -37,11 +37,16 @@
         Отправить на ремонт
       </button>
 
-      <input
-      placeholder="Что было отремонтировано"
-      type="text"
-      class="input__text"
-      v-else-if="repair">
+      <span class="contain" v-else-if="repair">
+        <input
+        placeholder="Что было отремонтировано"
+        type="text"
+        class="input__text">
+
+      <div class="upload">
+        <upload-files></upload-files>
+      </div>
+      </span>
 
       <button
       class="finish"
@@ -54,10 +59,12 @@
 </template>
 
 <script>
+import UploadFiles from '../../services/UploadFilesService'
 
 export default {
   name: 'CardCar',
   components: {
+    UploadFiles
   },
   props: {
     urlImg: {
@@ -169,9 +176,22 @@ export default {
   background-color: #D58C51;
 }
 
+.contain {
+  display: flex;
+  flex-direction: row;
+  gap: 2vh;
+}
+
 .input__text {
-  width: 70vh;
-  height: 20vh;
+  width: 35vh;
+  height: 10vh;
+  border-radius: 10px;
+  border: 3px solid #D58C51;
+}
+
+.upload {
+  width: 35vh;
+  height: 10vh;
   border-radius: 10px;
   border: 3px solid #D58C51;
 }
